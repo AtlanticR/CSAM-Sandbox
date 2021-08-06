@@ -5,7 +5,6 @@
 
 .DS_Store
 
-_book
 csas-style
 knitr-cache-docx
 knitr-cache-pdf
@@ -28,6 +27,5 @@ sr.tex
 *.rds
 *.Rproj
 *.sty
-*sty
 *.upa
 *.utf8.md

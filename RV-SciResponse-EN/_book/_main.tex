@@ -1,0 +1,1725 @@
+% Document setup
+\documentclass[11pt]{book}
+
+% Location of the csas-style repository: adjust path as needed
+\newcommand{\locRepo}{csas-style}
+
+% Use the style file in the csas-style repository (sr.sty)
+\usepackage{\locRepo/sr}
+
+% header-includes from R markdown entry
+
+
+%%%% Commands for title page etc %%%%%
+
+% Title
+\newcommand{\rdTitle}{Maritimes Research Vessel Survey Trends on the Scotian Shelf and Bay of Fundy}
+
+% French title
+\newcommand{\rdTitleFr}{Tendances dans les relevés par navire scientifique sur le plateau néo-écossais et dans la baie de Fundy dans la région des Maritimes}
+
+% Title short
+\newcommand{\rdTitleShort}{Maritimes Region RV Scotian Shelf and Bay of Fundy Survey Trends}
+% End of title short
+
+% Publication year
+\newcommand{\rdYear}{2020}
+
+% Publication month
+\newcommand{\rdMonth}{Month}
+
+% Report number
+\newcommand{\rdNumber}{\threedigits{019}}
+% End of report number
+
+% Approver (name\\position)
+\newcommand{\rdApp}{Alain Vézina\\
+Regional Director}
+
+% Approval date
+\newcommand{\rdAppDate}{January 10, 2020}
+
+% SR/Work done date
+\newcommand{\rdWorkDoneMonth}{April}
+\newcommand{\rdWorkDoneYear}{2020}
+
+% Branch
+\newcommand{\rdBranch}{Science Branch}
+
+% Region
+\newcommand{\rdRegion}{Maritimes Region}
+
+\newcommand{\rdISBN}{}
+\newcommand{\rdCatNo}{}
+
+%%%% End of title page commands %%%%%
+% commands and environments needed by pandoc snippets
+% extracted from the output of `pandoc -s`
+%% Make R markdown code chunks work
+\usepackage{array}
+\usepackage{amssymb,amsmath}
+\usepackage{color}
+\usepackage{fancyvrb}
+
+% From default template:
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+\newcommand{\lt}{\ensuremath <}
+\newcommand{\gt}{\ensuremath >}
+
+%Defines cslreferences environment
+%Required by pandoc 2.8
+%Copied from https://github.com/rstudio/rmarkdown/issues/1649
+
+\DeclareGraphicsExtensions{.png,.pdf}
+\begin{document}
+
+\bookmark[dest=PageOne]{\rdTitle{}}
+
+\MakeFirstPage
+
+\hypertarget{context}{%
+\section{Context}\label{context}}
+
+Fisheries and Oceans Canada (DFO) has conducted Summer Research Vessel (RV) surveys in the Maritimes Region, Northwest Atlantic Fisheries Organization (NAFO) Divisions 4VWX5Yb, using a standardized protocol since 1970 (Figure\ref{fig:1-map-NAFO}). Results of these surveys provide information on trends in abundance for most groundfish species in the Maritimes Region. While these data reflect trends in biomass and abundance and are a critical part of science-based stock assessments, a full assessment, including other sources of data, would be required to evaluate the impacts of management measures on population status. Resource Management requested a review of the DFO RV Survey information on the following list of fish stocks: 4Vn, 4VsW, and 4X5Y Atlantic Cod; 4VW and 4X5Y Haddock; 4X and 4VW White Hake; 4VWX Silver Hake; 4VWX+5 Pollock; Unit II and Unit III redfish; 3NOPs4VWX5Zc Atlantic Halibut; 4VW and 4X American Plaice; 4VW and 4X Witch Flounder; 4VW and 4X Winter Flounder; 4VW and 4X Yellowtail Founder; 4VW and 4X Smooth Skate; 4VW and 4X Thorny Skate; 4VW and 4X Barndoor Skate; 4VW and 4X Winter Skate; 4VW and 4X Little Skate; 4VW and 4X Atlantic Wolffish; 4VW and 4X Monkfish; 4VW and 4X Longhorn Sculpin; 4VWX Spiny Dogfish; 4X and 4VW Red Hake; 4X and 4VW Sea Raven; 4X and 4VW Ocean Pout. In addition, biomass trends relative to the Scotia Fundy Groundfish Advisory Committee (SFGAC) accepted biomass reference points were requested for White Hake (biomass for lengths \textgreater41 cm in 4X) and Unit III redfish (biomass for lengths \textgreater22 cm). The survey information will be used by DFO Resource Management as background for discussions with various stakeholders on recommendations for management measures and to determine which stocks should be reviewed in more detail in 2020.
+
+In addition, a review of available survey information was undertaken for a suite of species, including Blackbelly Rosefish, Black Sea Bass, Dusky Shark, Triggerfish, John Dory, and Tilefish. These species are being captured as bycatch in commercial fishing operations but are not covered under any license conditions and cannot be landed. This Science Response Report results from the Science Response Process of December 4--5, 2019, on the Maritimes Research Vessel Survey Trends on the Scotian Shelf and Bay of Fundy.
+
+Additional publications from this meeting will be posted on the \href{http://www.isdm-gdsi.gc.ca/csas-sccs/applications/events-evenements/index-eng.asp}{DFO Science Advisory Schedule} as they become available.
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+The DFO Summer RV Survey of the Scotian Shelf and Bay of Fundy has been conducted annually since 1970. The survey follows a stratified random sampling design and includes sampling of fish and invertebrates using a bottom otter trawl. These surveys are the primary data source for monitoring trends in species distribution, abundance, and biological condition within the region. There were changes to the net used and the vessel conducting the survey in 1982 and 1983, along with some changes in data collection protocols. These changes may affect the biomass trends for some species. For long-term averages, the most appropriate starting point has been selected for each species (for details see Clark and Emberley \protect\hyperlink{ref-ClarkEmberley2011}{2011}).
+
+The bottom trawl surveys were designed to provide abundance trends for fish and invertebrates between depths of about 30 m to 400 m. Survey indices are expected to be proportional to abundance for most species. Strata boundaries are shown in (Figure~\ref{fig:2-map-RVstrata}) for the 4VWX5 area. Sampling was conducted in all 4VWX5Yb strata and in the deeper strata of area 5Zc (Canadian portion of 5Z). The sampled area expanded to include strata 558 and 559 in 2015 and 5Z2 in 2016. Catch distribution plots for the entire DFO Summer RV Survey area are provided for a suite of species that are commonly caught in the 4VWX groundfish fishery. Biomass index trends are shown for the area appropriate for each stock. Comparisons of 2018 and 2019 length frequencies from the survey catch to the long-term mean (from beginning of survey series, or the period deemed appropriate for that particular species, to 2017) are also included, using data from the geographic areas that are used in assessments for those stocks. For stocks where the index area was not covered in 2018, the indices for 2017 and 2019 are shown.
+
+The expanded survey strata are not used in biomass or length frequency calculations because they have only been sampled for a short time frame. With additional years of data, a methodology will be developed to interpret indices including these data relative to earlier period, and then these strata will be included in calculations.
+
+All strata from 440--495 have had some sampling annually since 1970 with the exception of 2018. In 2018, sampling was conducted in all standard strata in 4X5Yb, but the majority of the survey area, including all of 4V, most of 4W and depths \textless183 m in 5Zj, were not sampled in 2018 due to mechanical problems with the vessel. Of the 270 stations selected for sampling in 2018, only 85 successful tows were completed.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/1-map-NAFO}}{Figure \ref{fig:1-map-NAFO}} 
+
+}
+
+\caption{Northwest Atlantic Fisheries Organization (NAFO) Divisions.}\label{fig:1-map-NAFO}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/2-map-RVstrata}}{Figure \ref{fig:2-map-RVstrata}} 
+
+}
+
+\caption{Fisheries and Oceans Canada DFO Summer Research Vessel Survey strata.}\label{fig:2-map-RVstrata}
+\end{figure}
+\hypertarget{analysis}{%
+\section{Analysis}\label{analysis}}
+
+\extrafloats{100}
+
+The stratified random survey design ensures that sampling takes places throughout the range covered by the survey. The strata were originally selected to represent different depths and habitats. Sampling occurs at randomly selected stations within all strata. The data are averaged within each stratum, weighted by stratum area and then summed over all appropriate strata for each stock. While this ensures that sampling is representative of the entire area, low sampling intensity means that there is high variability, particularly for stocks that are highly aggregated or that inhabit only a small part of the entire survey area; single data points in the biomass series should be interpreted with caution as large inter-annual changes could simply reflect variability in the data rather than changes in population abundance. Comparisons between the long-term and short-term averages may be more useful for representing the relative status of the population. Large inter-annual changes could also reflect the appearance of a strong year-class, or, conversely the impact of a single large tow; thus, biomass indices should be interpreted with reference to the length-frequency data and the distribution of catches to see if there are other data to aid interpretation.
+
+The time series of survey biomass indices and the three-year (3-yr) running geometric mean are compared to 40\% and 80\% of the long-term geometric mean (GM) to provide context for biomass levels. The geometric mean was selected for these comparisons to reduce the impact of very high values observed in some years. The values are presented in Table 1. Information on the calculation of these indices is contained in Stone and Gross (\protect\hyperlink{ref-StoneGross2012}{2012}). This can also be used as an indication of recruitment strength for species such as Haddock where recruitment pulses are apparent in the length frequency.
+
+Of note in the data, particularly for Cod and Haddock, is the increased abundance of young-of the-year fish (Age 0) in recent years. The short-term median length frequency shows a strong mode at \textless10 cm for both Cod and Haddock. This is not thought to be indicative of stronger recent recruitment. Rather, this likely reflects earlier spawning and, thus, these fish are available to the July survey in recent years, when in the past they would have still been in the pelagic phase in July.
+
+The total biomass index for 4X shows high inter-annual variability but no clear trend over time (Figure 3a).
+
+The large drop in biomass from 2018--2019 reflects lower catches for most demersal species. In 4W, demersal fish biomass increased in the 1980s, but, in the early 1990s dropped back to the level seen in the 1970s (Figure 3b).
+
+In 4V, the demersal fish biomass dropped in the 1990s and has remained low since then (Figure 3c).
+
+In 4V, Atlantic Cod and American Plaice comprised a large part of the biomass index in the 1970s and 1980s; both have experienced large declines (Figure 3c). Redfish did not experience the same drop in biomass and are the largest contributors to the 4V biomass indices in the last decade. While additional species, including Thorny Skate, White Hake, and Yellowtail Flounder have also declined since the 1980s in 4V, there are no demersal fish species that have experienced a large increase in biomass over time, so the overall index has remained low since the early 1990s.
+
+In 4W, increases in Atlantic Cod, Haddock and redfish led to the increase in biomass in the 1980s (Figure 3b). Biomass indices for Atlantic Cod and redfish dropped to very low levels in 4W by the 1990s and were responsible for most of the overall decline in biomass. Haddock biomass has declined in 4W since about 2010, and total demersal fish biomass in recent years has been the lowest in the time series.
+
+In 4X, Spiny Dogfish, redfish, and Haddock have made up the bulk of the demersal fish biomass index throughout the time series (Figure 3a). While Cod and Thorny Skate have clearly declined over time, their combined biomass did not represent a large part of the total (12\% in the 1970s). These declines are balanced by increases for other species, so, unlike 4V or 4W, there has been no general decline in demersal fish biomass over time.
+
+Changes in biomass indices from one year to the next for individual species should be interpreted cautiously. For those species where a population model is used, the inter-annual variability in population biomass estimates is lower than the variability in survey estimates. Additional information from commercial landings and age composition can help in interpreting survey data. The running 3-yr geometric mean may be a better indicator of biomass trends.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/4-fig-biomass4X}}{Figure \ref{fig:4-fig-biomass4X}} 
+
+}
+
+\caption{Biomass indices for the top ten demersal fish species (bars) in 4W and for all other demersal fish species combined. Refer to Figure 1 for NAFO Divisions within the Maritimes Region.}\label{fig:4-fig-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/5-fig-biomass4W}}{Figure \ref{fig:5-fig-biomass4W}} 
+
+}
+
+\caption{Biomass indices for the top ten demersal fish species (bars) in 4X and for all other demersal fish species combined. Refer to Figure 1 for NAFO Divisions within the Maritimes Region.}\label{fig:5-fig-biomass4W}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/6-fig-biomass4V}}{Figure \ref{fig:6-fig-biomass4V}} 
+
+}
+
+\caption{Biomass indices for the top ten demersal fish species (bars) in 4V and for all other demersal fish species combined. Refer to Figure 1 for NAFO divisions within the Maritimes Region.}\label{fig:6-fig-biomass4V}
+\end{figure}
+\clearpage
+
+
+\begin{landscapepage}
+\begin{longtable}[t]{lllllll}
+\caption{\label{tab:tab-biomass-species}DFO Summer Research Vessel Survey biomass indices (tonnes) for species by stock/region for 2017, 2018, 2019, current 3-yr Geometric Mean (GM) biomass index, and 40\% and 80\% of the long-term GM biomass index (1970--2018). NA: Indices not available due to reduced spatial coverage of the 2018 survey. For Silver Hake and Red Hake, the long-term average is 1982--2016.}\\
+\toprule
+\textbf{Stock/Region} & \textbf{2017} & \textbf{2018} & \textbf{2019} & \textbf{Current 3-yr GM} & \textbf{40\% Long-term GM} & \textbf{80\% Long-term GM}\\
+\midrule
+\endfirsthead
+\caption*{}\\
+\toprule
+\textbf{Stock/Region} & \textbf{2017} & \textbf{2018} & \textbf{2019} & \textbf{Current 3-yr GM} & \textbf{40\% Long-term GM} & \textbf{80\% Long-term GM}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+4X Atlantic Cod & 3,068 & 3,500 & 1,443 & 2,493 & 5,524 & 11,048\\
+4VsW Atlantic Cod & 10, 217 & NA' & 10,877 & 5,729 & 10,313 & 20,627\\
+4Vn Atlantic Cod & 1, 296 & NA & 331 & 2,070 & 6,528 & 3,264\\
+4VW Haddock & 35,796 & NA & 21,485 & 29,151 & 19,031 & 38,062\\
+4X Haddock & 38,456 & 44,628 & 28,081 & 36,391 & 19,812 & 39,623\\
+4VW White Hake & 4, 150 & NA & 1,306 & 3,047 & 3,029 & 6,059\\
+4X VW White Hake & 6,735 & 4,988 & 7,811 & 6,402 & 5,626 & 11,251\\
+4VWX Silver Hake & 31 321 & NA & 25068 & 33 077 & 12 980 & 28959\\
+4XWest Silver Hake & 10 112 & 9 301 & 4 138 & 7 301 & 1 337 & 2674\\
+WesternComoonentPollock & 15 052 & 14 836 & 8990 & 12615 & 7 889 & 15 778\\
+EasternComoonent Pollock & 3222 & NA & 2,541 & 5 053 & 7 152 & 14 304\\
+Unit II redfish & 28,808 & NA & 75,080 & 51,918 & 16,804 & 33,607\\
+Unit Ill redfish & 141,450 & NA & 57,589 & 141,224 & 36,939 & 73,877\\
+4X American Plaice & 276 & 487 & 217 & 308 & 594 & 1,187\\
+4VW American Plaice & 5,763 & NA & 5,182 & 4,717 & 7,537 & 15,074\\
+4XWitch Flounder & 984 & 1,577 & 1,797 & 1,408 & 593 & 1,186\\
+4VW Wrtch Flounder & 4,803 & NA & 5,542 & 5,560 & 1,386 & 2,772\\
+4X Yellowtail Flounder & 61 & 105 & 78 & 80 & 180 & 359\\
+4VW Yellowtail Flounder & 7 984 & NA & 4 675 & 7 194 & 4 863 & 9 726\\
+4XWinter Flounder & 3626 & 4 035 & 3 983 & 3 877 & 1036 & 2 071\\
+4VWWinter Flounder & 577 & NA & 310 & 377 & 245 & 490\\
+3N0Ps4VWX5Zc Atlantic Halibut & 15,437 & NA & 12,183 & 12,933 & 1,318 & 2,636\\
+4X Atlantic Wolffish & 82 & 295 & 335 & 201 & 419 & 838\\
+4VW Atlantic Wolffish & 354 & NA & 447 & 293 & 492 & 985\\
+4X Monkfish & 1,906 & 2,075 & 1,110 & 1,638 & 623 & 1,246\\
+4VW Monkfish & 863 & NA & 1,109 & 961 & 800 & 1,599\\
+4X Smooth Skate & 224 & 504 & 273 & 313 & 144 & 288\\
+4VW Smooth Skate & 140 & NA & 149 & 150 & 116 & 232\\
+4X Thomv Skate & 113 & 193 & 287 & 184 & 714 & 1 428\\
+4VW Thornv Skate & 1 858 & NA & 2.485 & 1 762 & 2 633 & 5265\\
+4XBarndoor Skate & 2,457 & 2,668 & 1,651 & 2,212 & 28 & 56\\
+4VW Bamdoor Skate & 1,340 & NA & 0 & 116 & 5 & 11\\
+4XWinter Skate & 840 & 571 & 401 & 577 & 302 & 604\\
+4VW Winter Skate & 562 & NA & 22 & 83 & 644 & 1,288\\
+4X Little Skate & 1,013 & 1, 156 & 1,362 & 1,185 & 188 & 375\\
+4VW Little Skate & 136 & NA & 35 & 59 & 13 & 25\\
+4X L Sculoin & 1 013 & 584 & 1 024 & 902 & 505 & 1 011\\
+4VW L Sculoin & 1 043 & NA & 1 234 & 1 118 & 858 & 1 717\\
+4X Red Hake & 1,419 & 1,848 & 2,046 & 1,751 & 497 & 994\\
+4VW Red Hake & 1, 149 & NA & 1,395 & 1,626 & 381 & 761\\
+4X Ocean Pout & 95 & 137 & 89 & 105 & 173 & 346\\
+4VW Ocean Pout & 12 & NA & 52 & 5 & 50 & 100\\
+4X Sea Raven & 1,213 & 1,097 & 673 & 964 & 673 & 1,346\\
+4VW Sea Raven & 1,475 & NA & 959 & 1,001 & 335 & 671\\*
+\end{longtable}
+\end{landscapepage}
+\hypertarget{atlantic-cod}{%
+\subsection{Atlantic Cod}\label{atlantic-cod}}
+
+The largest Atlantic Cod (\emph{Gadus morhua}) catches came from Georges Bank and Banquereau. There were no catches \textgreater50 kg in 4X or 4Vn in 2019; the biomass indices are the lowest in the time series in both areas and indices at length are below both long- and short-term medians for most lengths. The biomass index in 4VsW for 2019 is similar to 2017; in both years, abundance indices for larger cod are above the short-term medians.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/7-map-cod}}{Figure \ref{fig:7-map-cod}} 
+
+}
+
+\caption{Biomass indices for the top ten demersal fish species (bars) in 4W and for all other demersal fish species combined. Refer to Figure 1 for NAFO Divisions within the Maritimes Region.}\label{fig:7-map-cod}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/8-fig-cod-biomass4X}}{Figure \ref{fig:8-fig-cod-biomass4X}} 
+
+}
+
+\caption{Biomass index for Atlantic Cod in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:8-fig-cod-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/9-fig-cod-lengthfreq4X}}{Figure \ref{fig:9-fig-cod-lengthfreq4X}} 
+
+}
+
+\caption{(ref:caption9-fig-cod-lengthfreq4X)}\label{fig:9-fig-cod-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/10-fig-cod-biomass4VsW}}{Figure \ref{fig:10-fig-cod-biomass4VsW}} 
+
+}
+
+\caption{Biomass index for Atlantic Cod in 4VsW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:10-fig-cod-biomass4VsW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/11-fig-cod-lengthfreq4VsW}}{Figure \ref{fig:11-fig-cod-lengthfreq4VsW}} 
+
+}
+
+\caption{Length frequency indices for Atlantic Cod in 4VsW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:11-fig-cod-lengthfreq4VsW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/12-fig-cod-biomass4Vn}}{Figure \ref{fig:12-fig-cod-biomass4Vn}} 
+
+}
+
+\caption{Biomass index for Atlantic Cod in 4Vn from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:12-fig-cod-biomass4Vn}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/13-fig-cod-lengthfreq4Vn}}{Figure \ref{fig:13-fig-cod-lengthfreq4Vn}} 
+
+}
+
+\caption{Length frequency indices for Atlantic Cod in 4Vn from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:13-fig-cod-lengthfreq4Vn}
+\end{figure}
+\clearpage
+
+\hypertarget{haddock}{%
+\subsection{Haddock}\label{haddock}}
+
+There were very few sets where the catch of Haddock (\emph{Melanogrammus aeglefinus}) exceeded 100 kg in 4X in 2019. While Haddock were caught in almost every set in 4X, the biomass index was the lowest since 1994. In 2019, there was no indication of strong recruitment and the numbers at length were generally below the short-term median at all lengths.
+
+In 4VW, the biomass index was among the lowest in the time series. As in 4X, the numbers at length were generally below the short-term median at all lengths.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/14-map-haddock}}{Figure \ref{fig:14-map-haddock}} 
+
+}
+
+\caption{Distribution of Haddock catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:14-map-haddock}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/15-fig-haddock-biomass4X}}{Figure \ref{fig:15-fig-haddock-biomass4X}} 
+
+}
+
+\caption{Biomass index for Haddock in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:15-fig-haddock-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/16-fig-haddock-lengthfreq4X}}{Figure \ref{fig:16-fig-haddock-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Haddock in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:16-fig-haddock-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/17-fig-haddock-biomass4VW}}{Figure \ref{fig:17-fig-haddock-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Haddock in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:17-fig-haddock-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/18-fig-haddock-lengthfreq4VW}}{Figure \ref{fig:18-fig-haddock-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Haddock in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:18-fig-haddock-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{white-hake}{%
+\subsection{White Hake}\label{white-hake}}
+
+White Hake (\emph{Urophycis tenuis}) are broadly distributed in deeper waters along the shelf edge and in basins of the Scotian Shelf and Gulf of Maine. There were two sets in 2019, in Jordan Basin, where a catch of over 50 kg was recorded. White Hake biomass indices have been low relative to the long term. In 2018, catches in 4X included large numbers of juveniles, peaking at 33 cm. In 2019, the mode is at 45 cm and likely tracks growth for a year class. Indices at lengths \textgreater90 cm were above the median in 2019. The biomass index for 4X White Hake \textgreater41 cm remained below the Recovery Potential Assessment defined critical biomass reference point (3-yr geometric mean; Guenette and Clark 2016) in 2019. The biomass index for 4VW White Hake \textgreater41 cm has been below the RPA defined biomass recovery target since 2003. The biomass index in 2019 is the lowest in the time series, primarily due to low catches in 4Vn.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/19-map-whitehake}}{Figure \ref{fig:19-map-whitehake}} 
+
+}
+
+\caption{Distribution of White Hake catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:19-map-whitehake}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/20-fig-whitehake-biomass4X}}{Figure \ref{fig:20-fig-whitehake-biomass4X}} 
+
+}
+
+\caption{Biomass index for White Hake in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:20-fig-whitehake-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/21-fig-whitehake-lengthfreq4X}}{Figure \ref{fig:21-fig-whitehake-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for White Hake in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017}\label{fig:21-fig-whitehake-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/22-fig-whitehake-biomass4X-41cm}}{Figure \ref{fig:22-fig-whitehake-biomass4X-41cm}} 
+
+}
+
+\caption{Biomass index for 4X White Hake \textgreater41 cm from the DFO Summer RV Survey represented by the black circles. The solid black line represents the three-year geometric mean. The dashed blue line represents the biomass recovery target.}\label{fig:22-fig-whitehake-biomass4X-41cm}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/23-fig-whitehake-biomass4VW}}{Figure \ref{fig:23-fig-whitehake-biomass4VW}} 
+
+}
+
+\caption{Biomass index for White Hake in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:23-fig-whitehake-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/24-fig-whitehake-lengthfreq4VW}}{Figure \ref{fig:24-fig-whitehake-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for White Hake in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:24-fig-whitehake-lengthfreq4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/25-fig-whitehake-biomass4VW-41cm}}{Figure \ref{fig:25-fig-whitehake-biomass4VW-41cm}} 
+
+}
+
+\caption{Biomass index for 4VW White Hake \textgreater41 cm from the DFO Summer RV Survey represented by the black circles. The solid black line represents the three-year geometric mean. The dashed blue line represents the biomass recovery target.}\label{fig:25-fig-whitehake-biomass4VW-41cm}
+\end{figure}
+\clearpage
+
+\hypertarget{silver-hake}{%
+\subsection{Silver Hake}\label{silver-hake}}
+
+Silver Hake (\emph{Merluccius bilinearis}) were caught throughout most of the survey area, with the largest catches on Sable Island Bank and Banquereau. The 3-yr GM biomass index for the Scotian Shelf stock area (4VWX east) remains above 80\% of the long-term mean. Abundance indices are above the short-term GM for all lengths below 24 cm, indicative of above average recruitment. The biomass index and abundance in the Bay of Fundy (4X west) was near average in 2019, with indices at lengths \textless25 cm generally below the short-term median.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/26-map-silverhake}}{Figure \ref{fig:26-map-silverhake}} 
+
+}
+
+\caption{Distribution of Silver Hake catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:26-map-silverhake}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/27-fig-silverhake-biomass4VWX}}{Figure \ref{fig:27-fig-silverhake-biomass4VWX}} 
+
+}
+
+\caption{Biomass index for Silver Hake in 4VWX east (strata 440--483) from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1982--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:27-fig-silverhake-biomass4VWX}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/28-fig-silverhake-lengthfreq4VX}}{Figure \ref{fig:28-fig-silverhake-lengthfreq4VX}} 
+
+}
+
+\caption{Length frequency indices for Silver Hake in 4VWX east (strata 440--483) from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:28-fig-silverhake-lengthfreq4VX}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/29-fig-silverhake-biomass4X}}{Figure \ref{fig:29-fig-silverhake-biomass4X}} 
+
+}
+
+\caption{Biomass index for Silver Hake in 4X west (strata 484--495) from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1982--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:29-fig-silverhake-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/30-fig-silverhake-lengthfreq4X}}{Figure \ref{fig:30-fig-silverhake-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Silver Hake in 4X west (strata 484--495) from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:30-fig-silverhake-lengthfreq4X}
+\end{figure}
+\clearpage
+
+\hypertarget{pollock}{%
+\subsection{Pollock}\label{pollock}}
+
+Pollock (\emph{Pollachius virens}) were caught primarily in deeper water adjacent to Georges Bank and in the Gulf of Maine. The 3-yr GM Western Component biomass index is between 40\% and 80\% of the long-term mean. Indices at length of Western Component Pollock were below both the long-term and short-term median for lengths greater than 51 cm. Very few Pollock were caught in the east, and indices at length were below the short-term and long-term median for Eastern Pollock at most lengths in both 2017 and 2019.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/31-map-pollock}}{Figure \ref{fig:31-map-pollock}} 
+
+}
+
+\caption{Distribution of Pollock catches during the 2019 DFO Summer RV Survey including the Laurentian channel and Georges Bank. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:31-map-pollock}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/32-fig-pollock-biomassWestern}}{Figure \ref{fig:32-fig-pollock-biomassWestern}} 
+
+}
+
+\caption{Biomass index for Western Component Pollock (strata 474, 476, 480--495) from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018),respectively. The black dots represent the biomass index for that year.}\label{fig:32-fig-pollock-biomassWestern}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/33-fig-pollock-lengthfreqWestern}}{Figure \ref{fig:33-fig-pollock-lengthfreqWestern}} 
+
+}
+
+\caption{Length frequency indices for Western Component Pollock (strata 474, 476, 480--495) from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:33-fig-pollock-lengthfreqWestern}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/34-fig-pollock-biomassEastern}}{Figure \ref{fig:34-fig-pollock-biomassEastern}} 
+
+}
+
+\caption{Biomass index for Eastern Component Pollock (strata 440--473, 475, 477, 478) from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:34-fig-pollock-biomassEastern}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/35-fig-pollock-lengthfreqEastern}}{Figure \ref{fig:35-fig-pollock-lengthfreqEastern}} 
+
+}
+
+\caption{Length frequency indices for Eastern Component Pollock (strata 440--473, 475, 477, 478) from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:35-fig-pollock-lengthfreqEastern}
+\end{figure}
+\clearpage
+
+\hypertarget{redfish}{%
+\subsection{Redfish}\label{redfish}}
+
+Catches of redfish were largest along the Laurentian Channel and in deeper strata in 4X. The deep water of the Laurentian Channel has only been included in the summer survey coverage for 4 years and, thus, it is not used in the abundance index. The data are available for use in redfish assessments and should be included in indices once detailed analyses have been undertaken.
+
+Biomass indices for Unit II redfish have high inter-annual variability. In 2019, the survey indices were well above averages between 20 and 26 cm. The 3-yr average biomass index is well above 80\% of the long-term mean.
+
+In Unit III, the 2019 biomass index is the lowest since 2004 but the 3-yr GM biomass index remains above 80\% of the long-term GM. The short-term median abundance indices are generally higher than the long term, reflecting the recent high abundance. The abundance indices are below averages for lengths \textgreater23 cm. The mature biomass index (five-year average biomass for fish \textgreater22 cm) in 2019 is among the highest in the series and remains in the healthy zone.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/36-map-redfish}}{Figure \ref{fig:36-map-redfish}} 
+
+}
+
+\caption{Distribution of Redfish catches during the 2019 DFO Summer RV Survey including the Laurentian channel and Georges Bank. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:36-map-redfish}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/37-fig-redfish-biomassUnitII}}{Figure \ref{fig:37-fig-redfish-biomassUnitII}} 
+
+}
+
+\caption{Biomass index for Unit II redfish (strata 440--456, 464) from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:37-fig-redfish-biomassUnitII}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/38-fig-redfish-lengthfreqUnitII}}{Figure \ref{fig:38-fig-redfish-lengthfreqUnitII}} 
+
+}
+
+\caption{Length frequency indices for Unit II redfish (strata 440--456, 464) from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:38-fig-redfish-lengthfreqUnitII}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/39-fig-redfish-biomassUnitIII}}{Figure \ref{fig:39-fig-redfish-biomassUnitIII}} 
+
+}
+
+\caption{Biomass index for Unit III redfish (strata 457--463, 465--485) from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:39-fig-redfish-biomassUnitIII}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/40-fig-redfish-lengthfreqUnitIII}}{Figure \ref{fig:40-fig-redfish-lengthfreqUnitIII}} 
+
+}
+
+\caption{Length frequency indices for Unit III redfish (strata 457--463, 465--485) from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:40-fig-redfish-lengthfreqUnitIII}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/41-fig-redfish-biomassUnitIII-22cm}}{Figure \ref{fig:41-fig-redfish-biomassUnitIII-22cm}} 
+
+}
+
+\caption{Biomass index for Unit III redfish \textgreater22 cm from the DFO Summer RV Survey represented by the black circles. The solid black line represents the 5-year arithmetic mean. The dashed red line represents the limit reference point and the dashed blue line represents the upper stock reference point.}\label{fig:41-fig-redfish-biomassUnitIII-22cm}
+\end{figure}
+\clearpage
+
+\hypertarget{atlantic-halibut}{%
+\subsection{Atlantic Halibut}\label{atlantic-halibut}}
+
+Atlantic Halibut (\emph{Hippoglossus hippoglossus}) catches were wide-spread in the survey area. The biomass index was the highest in the series in 2017 at about 15,000 t and the second highest in the series in 2019. Indices of abundance for fish \textless48 cm were well below the short-term median in 2019, suggesting recruitment may be lower than in most recent years for these year classes.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/42-map-halibut}}{Figure \ref{fig:42-map-halibut}} 
+
+}
+
+\caption{Distribution of Atlantic Halibut catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:42-map-halibut}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/43-fig-halibut-biomass}}{Figure \ref{fig:43-fig-halibut-biomass}} 
+
+}
+
+\caption{Biomass index for 3NOPs4VWX5Zc Atlantic Halibut in 4VWX from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:43-fig-halibut-biomass}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/44-fig-halibut-lengthfreq}}{Figure \ref{fig:44-fig-halibut-lengthfreq}} 
+
+}
+
+\caption{Length frequency indices for 3NOPs4VWX5Zc Atlantic Halibut in 4VWX from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:44-fig-halibut-lengthfreq}
+\end{figure}
+\clearpage
+
+\hypertarget{yellowtail-flounder}{%
+\subsection{Yellowtail Flounder}\label{yellowtail-flounder}}
+
+Yellowtail Flounder (\emph{Limanda ferruginea}) were caught primarily in 4Vs and south-eastern 4W. Catches in 4X were primarily from Browns Bank. The biomass indices for 4X in 2018 and 2019 were among the lowest in the series. In 2019, the length-frequency indices were below long-term and short-term medians at all lengths, with no fish above 36 cm. In 4VW, the biomass index in 2019 was the second lowest in the time series and the 3-yr GM was the lowest since 2004. The indices at length in 4VW are below the long-term and short-term median for lengths over 22 cm.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/45-map-ytflounder}}{Figure \ref{fig:45-map-ytflounder}} 
+
+}
+
+\caption{Distribution of Yellowtail Flounder catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:45-map-ytflounder}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/46-fig-ytflounder-biomass4X}}{Figure \ref{fig:46-fig-ytflounder-biomass4X}} 
+
+}
+
+\caption{Biomass index for Yellowtail Flounder in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:46-fig-ytflounder-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/47-fig-ytflounder-lengthfreq4X}}{Figure \ref{fig:47-fig-ytflounder-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Yellowtail Flounder in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:47-fig-ytflounder-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/48-fig-ytflounder-biomass4VW}}{Figure \ref{fig:48-fig-ytflounder-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Yellowtail Flounder in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:48-fig-ytflounder-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/49-fig-ytflounder-lengthfreq4VW}}{Figure \ref{fig:49-fig-ytflounder-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Yellowtail Flounder in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:49-fig-ytflounder-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{american-plaice}{%
+\subsection{American Plaice}\label{american-plaice}}
+
+American Plaice (\emph{Hippoglossoides platessoides}) catches were generally small in the 2019 survey. The biomass index in 2019 is the lowest in the time series for 4X and the third lowest in 4VW. Abundance is low at all lengths above 15 cm in both 4X and 4VW.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/50-map-aplaice}}{Figure \ref{fig:50-map-aplaice}} 
+
+}
+
+\caption{Distribution of American Plaice catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:50-map-aplaice}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/51-fig-aplaice-biomass4X}}{Figure \ref{fig:51-fig-aplaice-biomass4X}} 
+
+}
+
+\caption{Biomass index for American Plaice in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:51-fig-aplaice-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/52-fig-aplaice-lengthfreq4X}}{Figure \ref{fig:52-fig-aplaice-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for American Plaice in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:52-fig-aplaice-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/53-fig-aplaice-biomass4VW}}{Figure \ref{fig:53-fig-aplaice-biomass4VW}} 
+
+}
+
+\caption{Biomass index for American Plaice in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:53-fig-aplaice-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/54-fig-aplaice-lengthfreq4VW}}{Figure \ref{fig:54-fig-aplaice-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for American Plaice in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:54-fig-aplaice-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{witch-flounder}{%
+\subsection{Witch Flounder}\label{witch-flounder}}
+
+Witch Flounder (\emph{Glyptocephalus cynoglossus}) were widespread in the survey area in 2019. The 3-yr mean biomass index has fluctuated around 80\% of the long-term mean in 4X for the last 20 years. The length-frequency indices in both 2018 and 2019 are above the short-term median for most lengths between 30 and 40 cm and in 2019 are high for lengths \textless22 cm. Witch Flounder above 45 cm have been largely absent from catches in the last 20 years.
+
+In 4VW, the biomass indices for both 2018 and 2019 are well above 80\% of the long-term mean and the 3-yr GM was among the highest since the 1970s. The abundance indices are also high for most lengths relative to both the long-term and short-term averages.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/55-map-witchflounder}}{Figure \ref{fig:55-map-witchflounder}} 
+
+}
+
+\caption{Distribution of Witch Flounder catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:55-map-witchflounder}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/56-fig-witchflounder-biomass4X}}{Figure \ref{fig:56-fig-witchflounder-biomass4X}} 
+
+}
+
+\caption{Biomass index for Witch Flounder in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:56-fig-witchflounder-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/57-fig-witchflounder-lengthfreq4X}}{Figure \ref{fig:57-fig-witchflounder-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Witch Flounder in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:57-fig-witchflounder-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/58-fig-witchflounder-biomass4VW}}{Figure \ref{fig:58-fig-witchflounder-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Witch Flounder in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:58-fig-witchflounder-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/59-fig-witchflounder-lengthfreq4VW}}{Figure \ref{fig:59-fig-witchflounder-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Witch Flounder in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:59-fig-witchflounder-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{winter-flounder}{%
+\subsection{Winter Flounder}\label{winter-flounder}}
+
+Winter Flounder (\emph{Pseudopleuronectes americanus}) were caught primarily at the western end of the survey area in 2019. Biomass indices in 4X have generally been higher since 1990. The short-term median indices at length are generally higher than the long-term medians. In 2019, the indices at length are below short-term medians for most lengths. In 4VW, the biomass index in 2019 is close to 40\% of the long-term GM. Indices at length are above the short-term median for small fish but at or below both short- and long-term GM above 21 cm.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/60-map-winterflounder}}{Figure \ref{fig:60-map-winterflounder}} 
+
+}
+
+\caption{Distribution of Winter Flounder catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:60-map-winterflounder}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/61-fig-winterflounder-biomass4X}}{Figure \ref{fig:61-fig-winterflounder-biomass4X}} 
+
+}
+
+\caption{Biomass index for Winter Flounder in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:61-fig-winterflounder-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/62-fig-winterflounder-lengthfreq4X}}{Figure \ref{fig:62-fig-winterflounder-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Winter Flounder in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:62-fig-winterflounder-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/63-fig-winterflounder-biomass4VW}}{Figure \ref{fig:63-fig-winterflounder-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Winter Flounder in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:63-fig-winterflounder-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/64-fig-winterflounder-lengthfreq4VW}}{Figure \ref{fig:64-fig-winterflounder-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Winter Flounder in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:64-fig-winterflounder-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{atlantic-wollffish}{%
+\subsection{Atlantic Wollffish}\label{atlantic-wollffish}}
+
+Atlantic Wolffish (\emph{Anarhichas lupus}) catches in 2019 came primarily from 4V, with sporadic catches elsewhere. The 3-yr GM biomass index for 2019 remains below 40\% of the long-term GM in 4X but appears stable. In 4VW, the indices at length were close to the long-term and short-term medians in 2017 and 2019. The biomass index in 4VW in 2019 was the highest since 2011 but remains below 40\% of the long-term GM.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/65-map-awolffish}}{Figure \ref{fig:65-map-awolffish}} 
+
+}
+
+\caption{Distribution of Atlantic Wolffish catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:65-map-awolffish}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/66-fig-awolffish-biomass4X}}{Figure \ref{fig:66-fig-awolffish-biomass4X}} 
+
+}
+
+\caption{Biomass index for Atlantic Wolffish in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:66-fig-awolffish-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/67-fig-awolffish-lengthfreq4X}}{Figure \ref{fig:67-fig-awolffish-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Atlantic Wolffish in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:67-fig-awolffish-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/68-fig-awolffish-biomass4VW}}{Figure \ref{fig:68-fig-awolffish-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Atlantic Wolffish in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:68-fig-awolffish-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/69-fig-awolffish-lengthfreq4VW}}{Figure \ref{fig:69-fig-awolffish-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Atlantic Wolffish in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:69-fig-awolffish-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{monkfish}{%
+\subsection{Monkfish}\label{monkfish}}
+
+Monkfish (\emph{Lophius americanus}) catches were scattered through much of the survey area in 2019. The biomass index in 2019 for 4X declined in 2019, but the 3-yr GM remains above 80\% of the long-term GM. The indices at length were generally above both the long-term and short-term medians. Biomass indices have been close to 40\% of the long-term mean in 4VW for the last 10 years, with very few fish in the catch again in 2019.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/70-map-monkfish}}{Figure \ref{fig:70-map-monkfish}} 
+
+}
+
+\caption{Distribution of Monkfish catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:70-map-monkfish}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/71-fig-monkfish-biomass4X}}{Figure \ref{fig:71-fig-monkfish-biomass4X}} 
+
+}
+
+\caption{Biomass index for Monkfish in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:71-fig-monkfish-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/72-fig-monkfish-lengthfreq4X}}{Figure \ref{fig:72-fig-monkfish-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Monkfish in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:72-fig-monkfish-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/73-fig-monkfish-biomass4VW}}{Figure \ref{fig:73-fig-monkfish-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Monkfish in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:73-fig-monkfish-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/74-fig-monkfish-lengthfreq4VW}}{Figure \ref{fig:74-fig-monkfish-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Monkfish in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:74-fig-monkfish-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{longhorn-sculpin}{%
+\subsection{Longhorn Sculpin}\label{longhorn-sculpin}}
+
+Longhorn Sculpin (\emph{Myoxocephalus octodecemspinosus}) are caught primarily on the Scotian Shelf banks and in the Bay of Fundy. The 3-yr GM biomass index is below 80\% of the long-term mean in both 4X and 4VW. Indices at length are below the long-term median values for most lengths above 25 cm in 4X, and above 20 cm in 4VW.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/75-map-lsculpin}}{Figure \ref{fig:75-map-lsculpin}} 
+
+}
+
+\caption{Distribution of Longhorn Sculpin catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:75-map-lsculpin}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/76-fig-lsculpin-biomass4X}}{Figure \ref{fig:76-fig-lsculpin-biomass4X}} 
+
+}
+
+\caption{Biomass index for Longhorn Sculpin in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:76-fig-lsculpin-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/77-fig-lsculpin-lengthfreq4X}}{Figure \ref{fig:77-fig-lsculpin-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Longhorn Sculpin in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:77-fig-lsculpin-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/78-fig-lsculpin-biomass4VW}}{Figure \ref{fig:78-fig-lsculpin-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Longhorn Sculpin in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:78-fig-lsculpin-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/79-fig-lsculpin-lengthfreq4VW}}{Figure \ref{fig:79-fig-lsculpin-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Longhorn Sculpin in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:79-fig-lsculpin-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{barndoor-skate}{%
+\subsection{Barndoor Skate}\label{barndoor-skate}}
+
+Barndoor Skate (\emph{Dipturus laevis}) were caught primarily at the western end of the survey area. There were none caught in 4VW in 2019. The 3-yr mean of the biomass index remains among the highest in the series for 4X in 2019, while in 4VW, with none caught in 2019, the 3-yr GM is low. Prior to 1998, catches are close to zero for all sizes of Barndoor Skates, so the medians are zero for all lengths. In 2019, fish were caught at lengths ranging from 39 to 127 cm.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/80-map-barndoorskate}}{Figure \ref{fig:80-map-barndoorskate}} 
+
+}
+
+\caption{Distribution of Barndoor Skate catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:80-map-barndoorskate}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/81-fig-barndoorskate-biomass4X}}{Figure \ref{fig:81-fig-barndoorskate-biomass4X}} 
+
+}
+
+\caption{Biomass index for Barndoor Skate in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:81-fig-barndoorskate-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/82-fig-barndoorskate-lengthfreq4X}}{Figure \ref{fig:82-fig-barndoorskate-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Barndoor Skate in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:82-fig-barndoorskate-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/83-fig-barndoorskate-biomass4VW}}{Figure \ref{fig:83-fig-barndoorskate-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Barndoor Skate in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:83-fig-barndoorskate-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/84-fig-barndoorskate-lengthfreq4VW}}{Figure \ref{fig:84-fig-barndoorskate-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Barndoor Skate in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey.The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:84-fig-barndoorskate-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{thorny-skate}{%
+\subsection{Thorny Skate}\label{thorny-skate}}
+
+Thorny Skate (\emph{Amblyraja radiata}) catches in 2019 were restricted primarily to 4V. The biomass index for 4X in 2019 was among the lowest in the series. In 4VW, the biomass index was the highest since 2011 but remains below 40\% of the long-term GM.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/85-map-thornyskate}}{Figure \ref{fig:85-map-thornyskate}} 
+
+}
+
+\caption{Distribution of Thorny Skate catches during the 2019 DFO Summer RV Survey including the Laurentian channel and Georges Bank. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:85-map-thornyskate}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/86-fig-thornyskate-biomass4X}}{Figure \ref{fig:86-fig-thornyskate-biomass4X}} 
+
+}
+
+\caption{Biomass index for Thorny Skate in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:86-fig-thornyskate-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/87-fig-thornyskate-lengthfreq4X}}{Figure \ref{fig:87-fig-thornyskate-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Thorny Skate in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey.The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:87-fig-thornyskate-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/88-fig-thornyskate-biomass4VW}}{Figure \ref{fig:88-fig-thornyskate-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Thorny Skate in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:88-fig-thornyskate-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/89-fig-thornyskate-lengthfreq4VW}}{Figure \ref{fig:89-fig-thornyskate-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Thorny Skate in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:89-fig-thornyskate-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{winter-skate}{%
+\subsection{Winter Skate}\label{winter-skate}}
+
+\textbf{Winter Skate} (\emph{Leucoraja ocellata}) and \textbf{Little Skate} (\emph{Leucoraja erinacea}) cannot be reliably distinguished at lengths less than about 40 cm (for more information, see McEachran and Musick \protect\hyperlink{ref-McEachran1973}{1973}). The practice at sea in most years was to record immature skates for which the identification was uncertain as Winter Skates. Given that the majority of the skates recorded as Winter Skates in the surveys are in this length range, the biomass trends were influenced by the contribution of fish for which identification was uncertain. For this document, only Winter Skates \textgreater40 cm are included in calculating the biomass indices.
+
+Winter Skate were caught primarily on Georges Bank, Browns Bank and in the Bay of Fundy in 2019. The 3-yr GM biomass index in 4X dropped below 80\% of the long-term GM in 2019. In 4VW, the 3-yr GM biomass index is below 40\% of the long-term GM and among the lowest in the time series.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/90-map-winterskate}}{Figure \ref{fig:90-map-winterskate}} 
+
+}
+
+\caption{Distribution of Winter Skate catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:90-map-winterskate}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/91-fig-winterskate-biomass4X}}{Figure \ref{fig:91-fig-winterskate-biomass4X}} 
+
+}
+
+\caption{Biomass index for Winter Skate in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:91-fig-winterskate-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/92-fig-winterskate-lengthfreq4X}}{Figure \ref{fig:92-fig-winterskate-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Winter Skate in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:92-fig-winterskate-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/93-fig-twinterskate-biomass4VW}}{Figure \ref{fig:93-fig-twinterskate-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Winter Skate in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:93-fig-twinterskate-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/94-fig-winterskate-lengthfreq4VW}}{Figure \ref{fig:94-fig-winterskate-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Winter Skate in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:94-fig-winterskate-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{little-skate}{%
+\subsection{Little Skate}\label{little-skate}}
+
+\textbf{Winter Skate} (\emph{Leucoraja ocellata}) and \textbf{Little Skate} (\emph{Leucoraja erinacea}) cannot be reliably distinguished at lengths less than about 40 cm (for more information, see McEachran and Musick \protect\hyperlink{ref-McEachran1973}{1973}). The practice at sea in most years was to record these immature skates as Winter Skates. Little Skate begin to mature at about 32 cm and can then be easily distinguished from Winter Skate. For this document, only Little Skates \textgreater32 cm are included in the long-term average length frequency.
+
+Little Skate are caught primarily in Western 4X and on Georges Bank. The biomass index for 4X in 2019 remained high, and abundance indices remained high for Little Skate for most lengths. The geographic range of Little Skate does not extend far into 4VW. In 4VW, the median catch at most lengths for the survey indices was zero and the biomass indices were very low.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/95-map-littleskate}}{Figure \ref{fig:95-map-littleskate}} 
+
+}
+
+\caption{Distribution of Little Skate catches during the 2019 DFO Summer RV Survey.Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:95-map-littleskate}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/96-fig-littleskate-biomass4X}}{Figure \ref{fig:96-fig-littleskate-biomass4X}} 
+
+}
+
+\caption{Biomass index for Little Skate in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:96-fig-littleskate-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/97-fig-littleskate-lengthfreq4X}}{Figure \ref{fig:97-fig-littleskate-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Little Skate in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:97-fig-littleskate-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/98-fig-littleskate-biomass4VW}}{Figure \ref{fig:98-fig-littleskate-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Little Skate in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:98-fig-littleskate-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/99-fig-littleskate-lengthfreq4VW}}{Figure \ref{fig:99-fig-littleskate-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Little Skate in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:99-fig-littleskate-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{smooth-skate}{%
+\subsection{Smooth Skate}\label{smooth-skate}}
+
+Smooth Skate (\emph{Malacoraja senta}) are caught at the eastern and western ends of the survey area. In 4X, the biomass index appears to have increased from a low in the early 1990s and has fluctuated around 80\% of the long-term mean in recent years. The biomass index in 4VW was above 40\% of the long-term GM in 2019. Few large Smooth Skate were caught in either 2017 or 2019, but the indices were well above the long-term GM between 20 and 30 cm.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/100-map-smoothskate}}{Figure \ref{fig:100-map-smoothskate}} 
+
+}
+
+\caption{Distribution of Smooth Skate catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:100-map-smoothskate}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/101-fig-smoothskate-biomass4X}}{Figure \ref{fig:101-fig-smoothskate-biomass4X}} 
+
+}
+
+\caption{Biomass index for Smooth Skate in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:101-fig-smoothskate-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/102-fig-smoothskate-lengthfreq4X}}{Figure \ref{fig:102-fig-smoothskate-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Smooth Skate in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--017.}\label{fig:102-fig-smoothskate-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/103-fig-smoothskate-biomass4VW}}{Figure \ref{fig:103-fig-smoothskate-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Smooth Skate in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:103-fig-smoothskate-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/104-fig-smoothskate-lengthfreq4VW}}{Figure \ref{fig:104-fig-smoothskate-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Smooth Skate in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:104-fig-smoothskate-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{spiny-dogfish}{%
+\subsection{Spiny Dogfish}\label{spiny-dogfish}}
+
+Spiny Dogfish (\emph{Squalus acanthias}) are well distributed in 4X, on Georges Bank and in the western end of 4W. The largest catch of Dogfish in 2019 (806 kg) was taken in 4W. This is the first year where the largest catch of Dogfish from the survey came from 4VW and is also the largest catch in 4VW in the survey time series.
+
+Inter-annual variability in survey catch is high for Spiny Dogfish. The 3-yr GM biomass index is above 80\% of the long-term GM in 2019. The indices at length are at or above the median values at all lengths. The Spiny Dogfish population extends across the Canada-US boundary, with the majority of the population in US waters in most years.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/105-map-dogfish}}{Figure \ref{fig:105-map-dogfish}} 
+
+}
+
+\caption{Distribution of Spiny Dogfish catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:105-map-dogfish}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/106-fig-dogfish-biomass}}{Figure \ref{fig:106-fig-dogfish-biomass}} 
+
+}
+
+\caption{Biomass index for Spiny Dogfish in 4VWX from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:106-fig-dogfish-biomass}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/107-fig-dogfish-lengthfreq}}{Figure \ref{fig:107-fig-dogfish-lengthfreq}} 
+
+}
+
+\caption{Length frequency indices for Spiny Dogfish in 4VWX from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:107-fig-dogfish-lengthfreq}
+\end{figure}
+\clearpage
+
+\hypertarget{red-hake}{%
+\subsection{Red Hake}\label{red-hake}}
+
+Red Hake (\emph{Urophycis chuss}) can be difficult to distinguish from White Hake. Prior to about 1985, these two species were not consistently separated. The standard guide to Canadian Atlantic fishes (Leim and Scott \protect\hyperlink{ref-LeimScott1966}{2011}) did not differentiate them.
+
+Red Hake were caught throughout 4X and 4W in 2019 but are seldom found in 4V. The short-term median numbers at length are generally higher than the long-term median in both 4X and 4VW, indicating a general increase in abundance. The indices at length in 2019 are generally above the short-term median values in both areas. In 4VW, the biomass index has been increasing since about 2010. In 2019, the 3-yr GM biomass index is the highest recorded since 1989.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/108-map-redhake}}{Figure \ref{fig:108-map-redhake}} 
+
+}
+
+\caption{Distribution of Red Hake catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:108-map-redhake}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/109-fig-redhake-biomass4X}}{Figure \ref{fig:109-fig-redhake-biomass4X}} 
+
+}
+
+\caption{Biomass index for Red Hake in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:109-fig-redhake-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/110-fig-redhake-lengthfreq4X}}{Figure \ref{fig:110-fig-redhake-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Red Hake in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:110-fig-redhake-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/111-fig-redhake-biomass4VW}}{Figure \ref{fig:111-fig-redhake-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Red Hake in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:111-fig-redhake-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/112-fig-redhake-lengthfreq4VW}}{Figure \ref{fig:112-fig-redhake-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Red Hake in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:112-fig-redhake-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{sea-raven}{%
+\subsection{Sea Raven}\label{sea-raven}}
+
+Sea Raven (\emph{Hemitripterus americanus}) are caught primarily on the banks and in the Bay of Fundy, with the largest sets taken in the Bay and on Banquereau. In 4X, the 2019 biomass index and the 3-yr GM biomass index are both the lowest in the time series. The indices at length are below the short-term median for most lengths. In 4VW, the survey biomass index remains above 80\% of the long-term GM. The indices at length are above the long-term median for most lengths.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/113-map-searaven}}{Figure \ref{fig:113-map-searaven}} 
+
+}
+
+\caption{Distribution of Sea Raven catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:113-map-searaven}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/114-fig-searaven-biomass4X}}{Figure \ref{fig:114-fig-searaven-biomass4X}} 
+
+}
+
+\caption{Biomass index for Sea Raven in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:114-fig-searaven-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/115-fig-searaven-lengthfreq4X}}{Figure \ref{fig:115-fig-searaven-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Sea Raven in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:115-fig-searaven-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/116-fig-searaven-biomass4VW}}{Figure \ref{fig:116-fig-searaven-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Sea Raven in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:116-fig-searaven-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/117-fig-searaven-lengthfreq4VW}}{Figure \ref{fig:117-fig-searaven-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Sea Raven in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:117-fig-searaven-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{ocean-pout}{%
+\subsection{Ocean Pout}\label{ocean-pout}}
+
+Ocean Pout (\emph{Zoarces americanus}) were caught in only a few sets in 2019. The 3-yr GM biomass indices have been below 40\% of the long-term mean for the last 6 years in 4X and at or below the long-term GM since 2002 in 4VW. Catches of larger Ocean Pout are very low relative to the median values in 4X.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/118-map-oceanpout}}{Figure \ref{fig:118-map-oceanpout}} 
+
+}
+
+\caption{Distribution of Ocean Pout catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:118-map-oceanpout}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/119-fig-oceanpout-biomass4X}}{Figure \ref{fig:119-fig-oceanpout-biomass4X}} 
+
+}
+
+\caption{Biomass index for Ocean Pout in 4X from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:119-fig-oceanpout-biomass4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/120-fig-oceanpout-lengthfreq4X}}{Figure \ref{fig:120-fig-oceanpout-lengthfreq4X}} 
+
+}
+
+\caption{Length frequency indices for Ocean Pout in 4X from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:120-fig-oceanpout-lengthfreq4X}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/121-fig-oceanpout-biomass4VW}}{Figure \ref{fig:121-fig-oceanpout-biomass4VW}} 
+
+}
+
+\caption{Biomass index for Ocean Pout in 4VW from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2017), respectively. The black dots represent the biomass index for that year.}\label{fig:121-fig-oceanpout-biomass4VW}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/122-fig-oceanpout-lengthfreq4VW}}{Figure \ref{fig:122-fig-oceanpout-lengthfreq4VW}} 
+
+}
+
+\caption{Length frequency indices for Ocean Pout in 4VW from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2017 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:122-fig-oceanpout-lengthfreq4VW}
+\end{figure}
+\clearpage
+
+\hypertarget{blackbelly-rosefish}{%
+\subsection{Blackbelly Rosefish}\label{blackbelly-rosefish}}
+
+Blackbelly Rosefish (\emph{Helicolenus dactylopterus}) are caught primarily in the deeper warmer waters of the Fundian Channel and along the edge of the Scotian Shelf during the summer RV survey. In 2019, they were caught regularly in these areas, and they were also caught in strata 440 and 446 in the Laurentian Channel for the first time in the survey series. Blackbelly Rosefish have been caught in the survey in all years since 1980, but their biomass index has increased since 1990 and has varied at a higher level since about 2004. Since they are found primarily in deeper strata, several of which have been added to the survey coverage since 1996, their biomass index is higher when 5Z9 and strata 496--498 are included.
+
+The short-term median indices at length are generally higher than the long-term indices at length, particularly above 25 cm; this reflects the overall increase in abundance, particularly for larger fish, which were rarely caught earlier in the series. In 2018, indices at length are generally similar to the short-term median values, while in 2019 indices are higher for smaller fish.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/123-map-bbrosefish}}{Figure \ref{fig:123-map-bbrosefish}} 
+
+}
+
+\caption{Distribution of Blackbelly Rosefish catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:123-map-bbrosefish}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/124-fig-bbrosefish-biomass}}{Figure \ref{fig:124-fig-bbrosefish-biomass}} 
+
+}
+
+\caption{Biomass index for Blackbelly Rosefish in 4VWX from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The dashed blue and red lines represent 80\% and 40\% of the long-term geometric mean (1970--2018), respectively. The black dots represent the biomass index for that year.}\label{fig:124-fig-bbrosefish-biomass}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/125-fig-bbrosefish-lengthfreq}}{Figure \ref{fig:125-fig-bbrosefish-lengthfreq}} 
+
+}
+
+\caption{Length frequency indices for Blackbelly Rosefish in 4VWX from the DFO Summer RV Survey. Black bars represent the number in thousands at length from the 2019 survey. Grey bars represent the number in thousands at length from the 2018 survey. The solid black line represents the median in thousands at length for the time period 1970--2017. The dashed black line represents the median in thousands at length for the time period 2008--2017.}\label{fig:125-fig-bbrosefish-lengthfreq}
+\end{figure}
+\clearpage
+
+\hypertarget{john-dory}{%
+\subsection{John Dory}\label{john-dory}}
+
+John Dory (\emph{Zenopsis conchifer}) are caught during the summer survey primarily in the deeper warmer waters along the edge of the Scotian Shelf and in the Scotian Gulf (South of Halifax), as well as in the Fundian Channel. John Dory catches were rare for most of the time series, but since 2014, they have been caught every year, with the largest catch exceeding 150 kg. While their distribution remains restricted within the survey area, they can be locally abundant. John Dory caught in the survey have included adults in spawning condition.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/126-map-johndory}}{Figure \ref{fig:126-map-johndory}} 
+
+}
+
+\caption{Distribution of John Dory catches during the DFO Summer RV Surveys from 2015--2019. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:126-map-johndory}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/127-fig-johndory-biomass}}{Figure \ref{fig:127-fig-johndory-biomass}} 
+
+}
+
+\caption{Biomass index for John Dory in 4VWX from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The black dots represent the biomass index for that year.}\label{fig:127-fig-johndory-biomass}
+\end{figure}
+\clearpage
+
+\hypertarget{shortfin-squid}{%
+\subsection{Shortfin Squid}\label{shortfin-squid}}
+
+Shortfin Squid (\emph{Illex illecebrosus}) are a short-lived, highly migratory species, with a broad distribution in the North Atlantic. They are caught throughout the survey area. The biomass indices for Shortfin Squid since 2017 have been among the highest observed in the time series. In 2019, the biomass index for Shortfin Squid was exceeded only by redfish among species caught in the survey.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/128-map-shortfinsquid}}{Figure \ref{fig:128-map-shortfinsquid}} 
+
+}
+
+\caption{Distribution of Shortfin Squid catches during the 2019 DFO Summer RV Survey. Zero catch is represented by the + symbol. Black circles represent catches. The circle area is proportional to the catch size.}\label{fig:128-map-shortfinsquid}
+\end{figure}
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/129-fig-shortfinsquid-biomass}}{Figure \ref{fig:129-fig-shortfinsquid-biomass}} 
+
+}
+
+\caption{Biomass index for Shortfin Squid in 4VWX from the DFO Summer RV Survey. The three-year geometric mean biomass index is represented by the solid black line. The black dots represent the biomass index for that year. The open circle represents the biomass index estimated for 2018.}\label{fig:129-fig-shortfinsquid-biomass}
+\end{figure}
+\hypertarget{other-species}{%
+\subsection{Other Species}\label{other-species}}
+
+Dusky Shark (\emph{Carcharhinus obscurus}) is a large pelagic shark. None have been captured in the RV survey, and this survey is unlikely to provide useful information on distribution or abundance for this species.
+
+Triggerfish (\emph{Balistes capriscus}) are common off Florida and in other sub-tropical waters on both sides of the Atlantic. They are a demersal fish and should be susceptible to capture by a bottom trawl; however, only one specimen has ever been caught in the RV survey time series. If these are being captured in commercial fisheries, it may be a seasonal migrant or may be found in depths not regularly sampled by the survey.
+
+Tilefish (\emph{Lopholatilus chamaeleonticeps}) are large, slow growing fish found in deep warm waters off the US coast from the Gulf of Mexico to Georges Bank. Four specimens have been caught during the time series, ranging in size from 1.0 to 10.3 kg. All four specimens were captured in locations where the bottom temperature exceeded 10°C. This species is caught in both recreational and commercial fisheries off the US coast, generally with hook and line. The RV survey may not be a suitable for providing useful information on distribution or abundance for this species.
+
+Black Sea Bass (\emph{Centropristis striata}) are a demersal species found from the Gulf of Mexico to Maine. This species has been caught during winter surveys on Georges Bank but has not been recorded during the Summer RV survey.
+
+Several species more commonly associated with warmer waters south of the Scotian Shelf have been caught in the Summer RV survey in recent years. Some, like Blackbelly Rosefish, are now well established on the Scotian Shelf. As water temperatures warm on the Scotian Shelf, it is expected that more southern species will appear in the survey and will become established in the region.
+
+\clearpage
+
+\hypertarget{temperature}{%
+\subsection{Temperature}\label{temperature}}
+
+The average bottom temperature recorded during the summer survey time series is 5.7 °C. This varies annually, but since 2012, bottom temperatures have, in general, been the warmest in the series (Figure 30). Bottom temperature varies greatly across the area covered, ranging from below 2°C to above 11°C. This variation in temperature influences species assemblage dynamics over the area. The warmest waters are found in the Fundian Channel, along the edge of the Scotian Shelf, in the central Scotian Shelf and in shallow waters around Sable Island.
+
+
+\begin{figure}[htb]
+
+{\centering \pdftooltip{\includegraphics[width=6in]{./figures/130-bottomT}}{Figure \ref{fig:130-bottomT}} 
+
+}
+
+\caption{Average annual bottom temperature (°C) from the DFO Summer RV Survey in 4VW.}\label{fig:130-bottomT}
+\end{figure}
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+In 2019, 258 successful bottom trawl tows were conducted out of the 280 stations initially selected, and all standard strata in the survey area were sampled at least at the minimum acceptable level. In addition, sampling was completed at the Halifax hydrographic station four times. Roughly four days of survey time were lost to vessel equipment and maintenance issues, leading to reduction in sampling in some large strata and also in 4V, which is generally sampled late in the survey.
+
+Several species more commonly associated with warmer waters south of the Scotian Shelf have been caught in the Summer RV survey in recent years. Some, like Blackbelly Rosefish, are now well established on the Scotian Shelf. As water temperatures warm on the Scotian Shelf, it is expected that more southern species will appear in the survey and will become established in the region.
+
+The total biomass index for demersal fish from the survey has been low in 4V since the 1990s. In 4W, total demersal fish biomass increased in the 1980s, then declined in the 1990s. Recently in 4W, biomass has declined to the lowest levels in the time series as Haddockbiomass has declined. In 4X, there is high inter-annual variability in total biomass index. There is no clear trend in biomass over time; however, the last three years have all been relatively low, so the 3-yr GM for 2019 is the lowest since the 1980s. The big drop in 2019 is primarily due to low catches of redfish.
+
+The numbers of large fish have been low for several species in recent years, and, for some species, the length range has been constricted. This constriction is apparent in the length frequency figures, with the long-term median length frequency extending to larger sizes or with much lower numbers at larger sizes in the most recent 10 years for species including Cod, Haddock, Witch Flounder, American Plaice, Thorny Skate, and Ocean Pout.
+
+Abundance indices for Age 0 4X Haddock were the highest in the time series in 2018, but this has not carried through to 2019 where there is no indication of strong year-classes for either Age 0 or 1.
+
+The overall biomass in 4X is low in 2019. While this is driven primarily by a decline in the 4X redfish biomass index, biomass indices have also declined for many other species, including 4X Haddock and Dogfish.
+
+For 4X Cod, 4X American Plaice, and 4X Sea Raven, biomass indices are the lowest in the time series, as is the case for 4Vn Cod and 4VW White Hake.
+
+Biomass indices for White Hake in 4X and 4VW remain in the Critical Zone in 2019, relative to the biomass recovery targets.
+
+Changes in biomass indices from one year to the next for individual species should be interpreted cautiously. A 3-yr GM of the survey biomass indices reduces the apparent variability in biomass estimates and may better reflect actual biomass trends. For those species where a population model is used, the inter-annual variability in population biomass estimates is lower than the variability in survey estimates. Additional information from commercial landings and age composition, where available, can help in interpreting survey data.
+
+\hypertarget{contributors}{%
+\section{Contributors}\label{contributors}}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Name & Affiliation\tabularnewline
+\midrule
+\endhead
+Don Clark (Lead) & DFO Science, Maritimes Region\tabularnewline
+Ryan Martin & DFO Science, Maritimes Region\tabularnewline
+Quinn McCurdy & DFO Science, Maritimes Region\tabularnewline
+Melanie Barrett & DFO Science, Maritimes Region\tabularnewline
+Jamie Emberley & DFO Science, Maritimes Region\tabularnewline
+Daphne Themelis & DFO Science, Maritimes Region\tabularnewline
+Heath Stone & DFO Science, Maritimes Region\tabularnewline
+Catalina Gomez & DFO Science, Maritimes Region\tabularnewline
+Monica Finley & DFO Science, Maritimes Region\tabularnewline
+Michelle Greenlaw & DFO Science, Maritimes Region\tabularnewline
+Dave Herbert & DFO Science, Maritimes Region\tabularnewline
+Alan Debertin & DFO Science, Maritimes Region\tabularnewline
+Virginia Noble & DFO Science, Maritimes Region\tabularnewline
+Ellen MacEachern & DFO Science, Maritimes Region\tabularnewline
+Phil Greyson & DFO Science, Maritimes Region\tabularnewline
+Fonya Irvine & DFO Science, Maritimes Region\tabularnewline
+Gordana Lazin & DFO Science, Maritimes Region\tabularnewline
+Danielle Dempsey & DFO Science, Maritimes Region\tabularnewline
+Tara McIntyre & DFO Science, Maritimes Region\tabularnewline
+Rabindra Singh & DFO Science, Maritimes Region\tabularnewline
+Brad Hubley & DFO Science, Maritimes Region\tabularnewline
+Sara Dellar & DFO Resource Management, Maritimes Region\tabularnewline
+Jennifer Saunders & DFO Resource Management, Maritimes Region\tabularnewline
+Penny Doherty & DFO Resource Management, Maritimes Region\tabularnewline
+\bottomrule
+\end{longtable}
+\addtocounter{table}{-1}
+
+\MakeApproval
+
+\hypertarget{sources-of-information}{%
+\section{Sources of information}\label{sources-of-information}}
+
+% This manually sets the header for this unnumbered chapter.
+\noindent
+\vspace{-2em}
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-ClarkEmberley2011}{}%
+Clark, D.W., and Emberley, J. 2011. Update of the 2010 summer scotian shelf and bay of fundy research vessel survey. Can. Tech. Rep. Fish. Aquat. Sci. 2011/1238: ix + 98 p.
+
+\leavevmode\hypertarget{ref-LeimScott1966}{}%
+Leim, A.H., and Scott, W.B. 2011. Fishes of the atlantic coast of canada. Bulletin of the Fisheries Research Board of Canada 155: 485 pp.
+
+\leavevmode\hypertarget{ref-McEachran1973}{}%
+McEachran, J.D., and Musick, J.A. 1973. Characters for distinguishing between immature specimens of the sibling species, (\emph{Raja erinacea}) and (\emph{Raja ocellata}) (pisces: Rajidae). Copeia 1973: 238--250.
+
+\leavevmode\hypertarget{ref-StoneGross2012}{}%
+Stone, H.H., and Gross, W.E. 2012. Review of the georges bank research vessel survey program, 1987--2011. Can. Manuscr. Rep. Fish. Aquat. Sci. 2012/2988: xiii + 95 p.
+
+\clearpage
+
+\section{This Report is Available from the:}
+\begin{center}
+Centre for Science Advice\\
+\rdRegion{}\\
+Fisheries and Oceans Canada\\
+1 Challenger Dr.\\Dartmouth, NS, B2Y 4A2\\
+\vspace{0.2cm}
+Telephone: (902) 426-3246\\
+E-mail: \link{mailto:XMARMRAP@dfo-mpo.gc.ca}{XMARMRAP@dfo-mpo.gc.ca}\\
+Internet address: \link{http://www.dfo-mpo.gc.ca/csas-sccs/}{www.dfo-mpo.gc.ca/csas-sccs/}\\
+\vspace{0.2cm}
+ISSN 1919-3769\\
+ISBN~\rdISBN{} \hspace{5mm} Cat~No.~\rdCatNo{}\\
+\vspace{0.2cm}
+\copyright{} Her Majesty the Queen in Right of Canada, \rdWorkDoneYear{}\\
+\vspace{0.2cm}
+\includegraphics[scale=0.96]{\locRepo/images/recycle.png}
+\end{center}
+\begin{flushleft}
+Correct Citation for this Publication:
+\end{flushleft}
+\begin{flushleft}
+\citeEng{\rdWorkDoneYear{}/\rdNumber{}}
+\end{flushleft}
+\begin{flushleft}
+\emph{Aussi disponible en fran\c{c}ais~:}
+\end{flushleft}
+\begin{flushleft}
+\citeFr{\rdWorkDoneYear{}/\rdNumber{}}
+\end{flushleft}
+\setlength{\parindent}{0in} \setlength{\leftskip}{0in} \setlength{\parskip}{4pt}
+\noindent \vspace{-2em} \setlength{\parindent}{-0.2in} \setlength{\leftskip}{0.2in} \setlength{\parskip}{8pt}
+
+\clearpage
+
+\end{document}
