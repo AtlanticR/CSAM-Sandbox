@@ -1,0 +1,19 @@
+# Background
+
+The DFO Summer RV Survey of the Scotian Shelf and Bay of Fundy has been conducted annually since 1970. The survey follows a stratified random sampling design and includes sampling of fish and invertebrates using a bottom otter trawl. These surveys are the primary data source for monitoring trends in species distribution, abundance, and biological condition within the region. There were changes to the net used and the vessel conducting the survey in 1982 and 1983, along with some changes in data collection protocols. These changes may affect the biomass trends for some species. For long-term averages, the most appropriate starting point has been selected for each species [for details see @ClarkEmberley2011].
+
+The bottom trawl surveys were designed to provide abundance trends for fish and invertebrates between depths of about 30 m to 400 m. Survey indices are expected to be proportional to abundance for most species. Strata boundaries are shown in (Figure \@ref(fig:2-map-RVstrata)) for the 4VWX5 area. Sampling was conducted in all 4VWX5Yb strata and in the deeper strata of area 5Zc (Canadian portion of 5Z). The sampled area expanded to include strata 558 and 559 in 2015 and 5Z2 in 2016. Catch distribution plots for the entire DFO Summer RV Survey area are provided for a suite of species that are commonly caught in the 4VWX groundfish fishery. Biomass index trends are shown for the area appropriate for each stock. Comparisons of 2018 and 2019 length frequencies from the survey catch to the long-term mean (from beginning of survey series, or the period deemed appropriate for that particular species, to 2017) are also included, using data from the geographic areas that are used in assessments for those stocks. For stocks where the index area was not covered in 2018, the indices for 2017 and 2019 are shown.
+
+The expanded survey strata are not used in biomass or length frequency calculations because they have only been sampled for a short time frame. With additional years of data, a methodology will be developed to interpret indices including these data relative to earlier period, and then these strata will be included in calculations.
+
+All strata from 440–495 have had some sampling annually since 1970 with the exception of 2018. In 2018, sampling was conducted in all standard strata in 4X5Yb, but the majority of the survey area, including all of 4V, most of 4W and depths <183 m in 5Zj, were not sampled in 2018 due to mechanical problems with the vessel. Of the 270 stations selected for sampling in 2018, only 85 successful tows were completed.
+
+(ref:caption1-map-NAFO) Northwest Atlantic Fisheries Organization (NAFO) Divisions. 
+```{r 1-map-NAFO, fig.cap="(ref:caption1-map-NAFO)"}
+knitr::include_graphics("./figures/1-map-NAFO.png")
+```
+
+(ref:caption2-map-RVstrata) Fisheries and Oceans Canada DFO Summer Research Vessel Survey strata. 
+```{r 2-map-RVstrata, fig.cap="(ref:caption2-map-RVstrata)"}
+knitr::include_graphics("./figures/2-map-RVstrata.png")
+```

@@ -1,0 +1,38 @@
+# Contributors
+
+```{r, echo=FALSE, include=FALSE}
+contributors <- tibble::tribble(
+  ~Name,          ~Affiliation,
+  "Don Clark (Lead)",   "DFO Science,  Maritimes Region",
+  "Ryan Martin",   "DFO Science, Maritimes Region",
+  "Quinn McCurdy",   "DFO Science, Maritimes Region",
+  "Melanie Barrett",   "DFO Science, Maritimes Region",
+  "Jamie Emberley",   "DFO Science, Maritimes Region",
+  "Daphne Themelis",   "DFO Science, Maritimes Region",
+  "Heath Stone",   "DFO Science, Maritimes Region",
+  "Catalina Gomez",   "DFO Science, Maritimes Region",
+  "Monica Finley",   "DFO Science, Maritimes Region",
+  "Michelle Greenlaw",   "DFO Science, Maritimes Region",
+  "Dave Herbert",   "DFO Science, Maritimes Region",
+  "Alan Debertin",   "DFO Science, Maritimes Region",
+  "Virginia Noble",   "DFO Science, Maritimes Region",
+  "Ellen MacEachern",   "DFO Science, Maritimes Region",
+  "Phil Greyson",   "DFO Science, Maritimes Region",
+  "Fonya Irvine",   "DFO Science, Maritimes Region",
+  "Gordana Lazin",   "DFO Science, Maritimes Region",
+  "Danielle Dempsey",   "DFO Science, Maritimes Region",
+  "Tara McIntyre",   "DFO Science, Maritimes Region",
+  "Rabindra Singh",   "DFO Science, Maritimes Region",
+  "Brad Hubley",   "DFO Science, Maritimes Region",
+  "Sara Dellar",   "DFO Resource Management, Maritimes Region",
+  "Jennifer Saunders",   "DFO Resource Management, Maritimes Region",
+  "Penny Doherty",   "DFO Resource Management, Maritimes Region",
+)
+```
+
+```{r, results='asis'}
+csasdown::csas_table(contributors)
+```
+
+<!-- Decrease the table index by one to account for the contributors table: -->
+\addtocounter{table}{-1}

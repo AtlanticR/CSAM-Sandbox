@@ -1,0 +1,21 @@
+# Conclusions
+
+In 2019, 258 successful bottom trawl tows were conducted out of the 280 stations initially selected, and all standard strata in the survey area were sampled at least at the minimum acceptable level. In addition, sampling was completed at the Halifax hydrographic station four times. Roughly four days of survey time were lost to vessel equipment and maintenance issues, leading to reduction in sampling in some large strata and also in 4V, which is generally sampled late in the survey. 
+
+Several species more commonly associated with warmer waters south of the Scotian Shelf have been caught in the Summer RV survey in recent years. Some, like Blackbelly Rosefish, are now well established on the Scotian Shelf. As water temperatures warm on the Scotian Shelf, it is expected that more southern species will appear in the survey and will become established in the region.
+
+The total biomass index for demersal fish from the survey has been low in 4V since the 1990s. In 4W, total demersal fish biomass increased in the 1980s, then declined in the 1990s. Recently in 4W, biomass has declined to the lowest levels in the time series as Haddockbiomass has declined. In 4X, there is high inter-annual variability in total biomass index. There
+is no clear trend in biomass over time; however, the last three years have all been relatively low, so the 3-yr GM for 2019 is the lowest since the 1980s. The big drop in 2019 is primarily due to low catches of redfish.
+
+The numbers of large fish have been low for several species in recent years, and, for some species, the length range has been constricted. This constriction is apparent in the length frequency figures, with the long-term median length frequency extending to larger sizes or with much lower numbers at larger sizes in the most recent 10 years for species including Cod, Haddock, Witch Flounder, American Plaice, Thorny Skate, and Ocean Pout. 
+
+Abundance indices for Age 0 4X Haddock were the highest in the time series in 2018, but this has not carried through to 2019 where there is no indication of strong year-classes for either Age 0 or 1. 
+
+The overall biomass in 4X is low in 2019. While this is driven primarily by a decline in the 4X redfish biomass index, biomass indices have also declined for many other species, including 4X Haddock and Dogfish.
+
+For 4X Cod, 4X American Plaice, and 4X Sea Raven, biomass indices are the lowest in the time series, as is the case for 4Vn Cod and 4VW White Hake.
+
+Biomass indices for White Hake in 4X and 4VW remain in the Critical Zone in 2019, relative to the biomass recovery targets.
+
+Changes in biomass indices from one year to the next for individual species should be interpreted cautiously. A 3-yr GM of the survey biomass indices reduces the apparent variability in biomass estimates and may better reflect actual biomass trends. For those species where a population model is used, the inter-annual variability in population biomass estimates is lower than the variability in survey estimates. Additional information from commercial landings and
+age composition, where available, can help in interpreting survey data.

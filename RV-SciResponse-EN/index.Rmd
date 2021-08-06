@@ -1,0 +1,107 @@
+---
+title: "Maritimes Research Vessel Survey Trends on the Scotian Shelf and Bay of Fundy"
+title_short: "Maritimes Region RV Scotian Shelf and Bay of Fundy Survey Trends"
+title_other: "Tendances dans les relevés par navire scientifique sur le plateau néo-écossais et dans la baie de Fundy dans la région des Maritimes"
+year: 2020
+month: Month
+report_number: 019
+approver: |
+  Alain Vézina\
+  Regional Director 
+approval_year: 2020
+approval_month: January
+approval_day: 10
+work_done_year: 2020
+work_done_month: April
+branch: Science Branch
+region: Maritimes Region
+output:
+ csasdown::sr_pdf:
+   french: false
+   prepub: false
+   copy_sty: true
+   line_nums: false
+   line_nums_mod: 1
+type:
+  sr
+# ------------
+# End of options to set
+knit: bookdown::render_book
+site: bookdown::bookdown_site
+link-citations: true
+bibliography: bib/refs.bib
+lot: true
+lof: true
+# Any extra LaTeX code for the header:
+# header-includes:
+# - \usepackage{tikz}
+---
+
+```{r setup, echo=FALSE, cache=FALSE, message=FALSE, results='hide', warning=FALSE}
+library(knitr)
+if (is_latex_output()) {
+  knitr_figs_dir <- "knitr-figs-pdf/"
+  knitr_cache_dir <- "knitr-cache-pdf/"
+  fig_out_type <- "png"
+} else {
+  knitr_figs_dir <- "knitr-figs-docx/"
+  knitr_cache_dir <- "knitr-cache-docx/"
+  fig_out_type <- "png"
+}
+fig_asp <- 0.618
+fig_width <- 9
+fig_out_width <- "6in"
+fig_dpi <- 180
+fig_align <- "center"
+fig_pos <- "htb"
+opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.path = knitr_figs_dir,
+  cache.path = knitr_cache_dir,
+  fig.asp = fig_asp,
+  fig.width = fig_width,
+  out.width = fig_out_width,
+  echo = FALSE,
+  #  autodep = TRUE,
+  #  cache = TRUE,
+  cache.comments = FALSE,
+  dev = fig_out_type,
+  dpi = fig_dpi,
+  fig.align = fig_align,
+  fig.pos = fig_pos
+)
+options(xtable.comment = FALSE)
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+```{r load-libraries, cache=FALSE}
+# `french` and `prepub` variables are extracted from the YAML headers above and
+#  are used throughout the document. To make the document all in french, change
+#  the line in the YAML header above to `french: true`
+meta <- rmarkdown::metadata$output
+if(length(grep("pdf", names(meta)))){
+  french <- meta$`csasdown::sr_pdf`$french
+  prepub <- meta$`csasdown::sr_pdf`$prepub
+}else if(length(grep("word", names(meta)))){
+  french <- meta$`csasdown::sr_word`$french
+  prepub <- meta$`csasdown::sr_word`$prepub
+}
+csl <- "csl/csas.csl"
+if(french){
+  csl <- "csl/csas-french.csl"
+  options(OutDec =  ",")
+}
+
+# add other packages here:
+library(dplyr)
+library(readr)
+library(tibble)
+library(csasdown)
+```
+
+---
+csl: `r csl`    
+---
